@@ -13,18 +13,22 @@ def load_missions():
     else:
         return {"missions":[]}
     
-def save_mission():
+def save_mission(data):
      with open(path,"w") as file:
-            json.dump(missions,file,indent=2)
+            json.dump(data,file,indent=2)
+
 
 
 def create_mission(admin_username:str):
     title = input("Enter the mission title: ")
     description = input("Enter mission description: ")
-    if description in missions_dict[title]:
-        return "There is a mission like this that already exists!"
-    else:
-        missions_dict[title] = {"description":description}
-        with open(path,"w") as file:
-            json.dump(missions_dict,file,indent=2)
-    return f"Mission create with ID: 00"
+    data = load_missions()
+    missions = data["missions"]
+    for mission in missions:
+        if description.strip().lower() == mission["description"].strip().lower():
+            return f"A missions with this {description} already exist!"
+
+    new_mission = {"id":len(missions)+1,"title":title,"description":description,"created_by":admin_username,"completed_by":[]}
+    missions.append(new_mission)
+    save_mission(data)
+    return f"You create a mission successfully with ID: {new_mission["id"]}"

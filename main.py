@@ -1,4 +1,5 @@
 from auth_with_class import Auth
+from admin import create_mission
 
 
 def admin_menu(user:dict):
@@ -12,7 +13,7 @@ def admin_menu(user:dict):
         elif admin_choice == "3":
             pass
         elif admin_choice == "4":
-            pass
+            print(create_mission(user))
         elif admin_choice == "5" or admin_choice.lower() == "logout":
             print("Bye👋")
             break
