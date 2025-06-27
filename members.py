@@ -28,6 +28,28 @@ def view_available_missions(username:str):
     for mission in avaliable_missions:
         print(f"{mission["id"]}. Title: {mission["title"]} [Description -> {mission["description"]}]")
 
+def submit_missions(username:str):
+    data = load_missions()
+    missions = data["missions"]
+    avaliable_missions = [mission for mission in missions if username not in mission["completed_by"]]
+    if not avaliable_missions:
+        return "There is no avaliable missions for you to solve 🎉"
+    try:
+        mission_id = int(input("Enter the ID of the mission that you want to submit: "))
+    except ValueError:
+         return "Invalid ID"
+    for mission in missions:
+        if mission["id"] == mission_id:
+            answer = input("Enter the answer for this mission: ").strip().lower()
+            if mission["answer"] == answer:
+                mission["completed_by"].append(username)
+                save_mission(data)
+                return "👏 Congratulations you completed the mission, Now the mission is marked as completed "
+            else:
+                return "Wrong answer!"
+    return "There is no mission with this ID"
+
+
          
 
     
