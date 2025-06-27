@@ -3,14 +3,15 @@ import json
 
 path = "D:/Units/UNIT-PROJECT-1/data/missions.json"
 
-if os.path.exists(path):
-    with open(path,"r") as file:
-        try:
-                missions_dict = json.load(file)
-        except json.JSONDecodeError:
-                missions_dict = {}
-else:
-    missions_dict = {}
+def load_missions():
+    if os.path.exists(path):
+        with open(path,"r") as file:
+            try:
+                    return json.load(file)
+            except json.JSONDecodeError:
+                    return {"missions":[]}
+    else:
+        return {"missions":[]}
 
 
 def create_mission(admin_username:str):
