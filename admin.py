@@ -12,6 +12,10 @@ def load_missions():
                     return {"missions":[]}
     else:
         return {"missions":[]}
+    
+def save_mission():
+     with open(path,"w") as file:
+            json.dump(missions,file,indent=2)
 
 
 def create_mission(admin_username:str):
