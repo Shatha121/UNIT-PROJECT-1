@@ -22,13 +22,14 @@ def save_mission(data):
 def create_mission(admin_username:str):
     title = input("Enter the mission title: ")
     description = input("Enter mission description: ")
+    answer = input("Enter the answer for the mission: ")
     data = load_missions()
     missions = data["missions"]
     for mission in missions:
         if description.strip().lower() == mission["description"].strip().lower():
             return f"A missions with this {description} already exist!"
 
-    new_mission = {"id":len(missions)+1,"title":title,"description":description,"created_by":admin_username,"completed_by":[]}
+    new_mission = {"id":len(missions)+1,"title":title,"description":description,"created_by":admin_username,"answer":answer.strip().lower(),"completed_by":[]}
     missions.append(new_mission)
     save_mission(data)
     return f"You create a mission successfully with ID: {new_mission["id"]}"
@@ -38,7 +39,7 @@ def view_missions():
     missions = data["missions"]
     for mission in missions:
         if mission["completed_by"] == []:
-            print(f"{mission["id"]}. Title: {mission["title"]} [Description -> {mission["description"]}, Created by: {mission["created_by"]["username"]}, Solved by members: None]")
+            print(f"{mission["id"]}. Title: {mission["title"]} [Description -> {mission["description"]}, Created by: {mission["created_by"]["username"]}, Answer for the mission: {mission["answer"]} ,Solved by members: None]")
         else:
-            print(f"{mission["id"]}. Title: {mission["title"]} [Description -> {mission["description"]}, Created by: {mission["created_by"]["username"]}, Solved by members: {mission["completed_by"]}]")
+            print(f"{mission["id"]}. Title: {mission["title"]} [Description -> {mission["description"]}, Created by: {mission["created_by"]["username"]}, Answer for the mission: {mission["answer"]} , Solved by members: {mission["completed_by"]}]")
         
