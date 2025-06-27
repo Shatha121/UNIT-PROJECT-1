@@ -32,3 +32,13 @@ def create_mission(admin_username:str):
     missions.append(new_mission)
     save_mission(data)
     return f"You create a mission successfully with ID: {new_mission["id"]}"
+
+def view_missions():
+    data = load_missions()
+    missions = data["missions"]
+    for mission in missions:
+        if mission["completed_by"] == []:
+            print(f"{mission["id"]}. Title: {mission["title"]} [Description -> {mission["description"]}, Created by: {mission["created_by"]["username"]}, Solved by members: None]")
+        else:
+            print(f"{mission["id"]}. Title: {mission["title"]} [Description -> {mission["description"]}, Created by: {mission["created_by"]["username"]}, Solved by members: {mission["completed_by"]}]")
+        

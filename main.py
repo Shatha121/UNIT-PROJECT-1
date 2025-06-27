@@ -1,5 +1,5 @@
 from auth_with_class import Auth
-from admin import create_mission
+from admin import create_mission,view_missions
 
 
 def admin_menu(user:dict):
@@ -11,7 +11,7 @@ def admin_menu(user:dict):
         elif admin_choice == "2":
             pass
         elif admin_choice == "3":
-            pass
+            view_missions()
         elif admin_choice == "4":
             print(create_mission(user))
         elif admin_choice == "5" or admin_choice.lower() == "logout":
