@@ -1,6 +1,6 @@
 from auth_with_class import Auth
 from admin import create_mission,view_missions
-
+from members import view_available_missions
 
 def admin_menu(user:dict):
     print(f"Welcome Admin {user['username']}, What would you like to do?")
@@ -26,9 +26,12 @@ def admin_menu(user:dict):
 def member_menu(user:dict):
     print(f"Welcome {user['username']}, What would you like to do?")
     while True:
-        member_choice = input("1)View Missions \n 2)Submit Mission Report \n 3)Logout \nChoice: ")
+        member_choice = input("1)View Missions \n2)Submit Mission Report \n3)Logout \nChoice: ")
         if member_choice == "1":
-            pass
+            print()
+            print("-"*15)
+            view_available_missions(user)
+            print("-"*15)
         elif member_choice == "2":
             pass
         elif member_choice == "3" or member_choice.lower() == "logout":
