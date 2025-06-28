@@ -1,5 +1,8 @@
 import os
 import json
+from auth_with_class import Auth
+
+auth = Auth()
 
 path = "D:/Units/UNIT-PROJECT-1/data/missions.json"
 
@@ -43,6 +46,18 @@ def submit_missions(username:str):
             answer = input("Enter the answer for this mission: ").strip().lower()
             if mission["answer"] == answer:
                 mission["completed_by"].append(username)
+                users = auth.users
+                users[username]["missions_completed"] += 1
+                completed = users[username]["missions_completed"]
+                if completed >= 10:
+                    users[username]["rank"] = "Mastermind"
+                elif completed >= 5:
+                    users[username]["rank"] = "Solver"
+                elif completed >= 3:
+                    users[username]["rank"] = "Explorer"
+                else:
+                    users[username]["rank"] = "Novice"
+                auth.save_user()
                 save_mission(data)
                 return "👏 Congratulations you completed the mission, Now the mission is marked as completed "
             else:

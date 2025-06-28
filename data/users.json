@@ -9,10 +9,8 @@
   },
   "Yasser": {
     "password": "123456",
-    "role": "member"
-  },
-  "Nasser": {
-    "password": "123456",
-    "role": "member"
+    "role": "member",
+    "rank": "Novice",
+    "missions_completed": 1
   }
 }

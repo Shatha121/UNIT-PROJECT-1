@@ -46,11 +46,11 @@ class Auth:
                     return f"Registration successful, you are now one of admins of the Society"
                 else:
                     print("incorrect access code! Your role is going to be member")        
-                    self.users[username] = {"password":password,"role":"member"}
+                    self.users[username] = {"password":password,"role":"member","rank":"Novice","missions_completed": 0}
                     self.save_user()
                     return f"Registration successful, you are now a member of the Society"
             elif admin_or_member.lower() == "member":
-                self.users[username] = {"password":password,"role":"member"}
+                self.users[username] = {"password":password,"role":"member","rank":"Novice","missions_completed": 0}
                 self.save_user()
                 return f"Registration successful, you are now a member of the Society"
             else:
