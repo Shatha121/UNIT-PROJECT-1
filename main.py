@@ -12,7 +12,8 @@ def admin_menu(user:dict):
         if admin_choice == "1":
             auth.view_all_users()
         elif admin_choice == "2":
-            pass
+            member_name = input("Enter the username of the member that you want to promote to admin: ")
+            print(auth.promote_to_admin(member_name))
         elif admin_choice == "3":
             view_missions()
         elif admin_choice == "4":

@@ -60,3 +60,14 @@ class Auth:
     def view_all_users(self):
         for username , details in self.users.items():
             print(f"{username} - Role: {details["role"]}")
+    
+    def promote_to_admin(self,username:str):
+        if username not in self.users:
+            return f"This username: {username} doesn't exist!"
+        elif self.users[username]["role"] == "admin":
+            return f"This username: {username} is already an admin!"
+        else:
+            self.users[username]["role"] = "admin"
+            self.save_user()
+            return f"{username} has been promoted to admin"
+        
