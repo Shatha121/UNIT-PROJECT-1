@@ -1,45 +1,50 @@
-# UNIT-PROJECT-1
+# Secret Society Mission Tracker
 
 
 
-## Based on what you’ve learned until now , create a project of your choosing (impress us with your imagination) . This project must at least satisfy the following minimum requirements :
-
-- Must be interactive on CLI.
-- Use your coding skills in Python accurately.
-- Organize Your Code into modules & (or packages)
-- Use git & Github to track changes in your code.
-
-## Example Project :  An online Grocery Store :
-
-#### Overview : An online store that sells fruits to customers. This online store has 2 main users. The customer and the manager of the store . Each one of them should be able to do the following tasks for the store to function properly . 
+#### Overview : A simple console-based Python app that allows admins to create and manage secret missions, and members to solve them, level up, and climb the ranks.
 
 ### Features & User Stories
-#### As a customer I should be able to do the following :
-- Browse  Products . 
-- View the product info (summary, specs, price, quantity , etc.)
-- Search for Products.
-- Get recommendations for my next purchase based on my purchase history.
-- Add Products to the shopping cart .
-- Remove a product from the shopping cart.
-- List the products in my shopping cart. 
-- Continue to checkout . 
-- Fill in my address for delivery.
-- Get receipt of my purchases.
-- Check delivery status . 
+#### As a member I should be able to do the following :
+- Register / Login .
+- View available missions .
+- Submit answers to missions .
+- Get Ranked up automutomatically .
+- View their current progress and rank .
 
+#### As a admin I should be able to do the following :
+- Register / Login (with access code) .
+- Create missions (title, description, answer) .
+- View all usersand their roles . 
+- Promote members to admins . 
+- Review all submitted/completed missions.
+
+#### Rank System :
+| Missions completed |    Rank    |
+| 0-2                | Novice     |
+| 3-4                | Solver     |
+| 5-9                | Explorer   |
+| 10+                | Mastermind |
 
 
 #### Usage :
- Explain to the user how to use your project . 
- for example:
- - type in search product_name to search for a product.
- - type in list_products to show all the products in the grocery.
- - type in show product_name to get information about this product.
- - type in buy product_name to buy the product . 
- - and so on...
 
+ Once you run the program, you will be prompted to either register or log in.
 
-### For your project. Edit this README.md file to include your own project name,  overview, user stories, and usage. 
+ - Type 'register' to create a new user account (admin or member) .
+ - Type 'login' to log in with an existing account .
+ - Type 'exit' to close program .
 
-### NOTE: before submitting the final project, please do the following command:
-`pip freeze > requirements.txt` to enable use to know & use the packages used in your project.
+#### As a Member:
+- Type '1' to view available missions .
+- Type '2' to submit a mission answer .
+- Type '3' to or 'logout' to log out .
+
+#### As a Admin:
+- Type '1' to view all users .
+- Type '2' to promote a user to admin .
+- Type '3' to view all missions .
+- Type '4' to create a new mission .
+- Type '5' to review submitted missions .
+- Type '6' to or 'logout' to log out . 
+
