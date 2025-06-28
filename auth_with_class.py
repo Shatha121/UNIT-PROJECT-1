@@ -57,3 +57,6 @@ class Auth:
                 raise ValueError("You have to choose between member or admin!")
             
         
+    def view_all_users(self):
+        for username , details in self.users.items():
+            print(f"{username} - Role: {details["role"]}")

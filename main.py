@@ -2,12 +2,15 @@ from auth_with_class import Auth
 from admin import create_mission,view_missions
 from members import view_available_missions, submit_missions
 
+
+auth = Auth()
+
 def admin_menu(user:dict):
     print(f"Welcome Admin {user['username']}, What would you like to do?")
     while True:
         admin_choice = input("1)View All Users \n2)Promote User \n3)View Missions \n4)Create Mission \n5)Logout \nChoice:")
         if admin_choice == "1":
-            pass
+            auth.view_all_users()
         elif admin_choice == "2":
             pass
         elif admin_choice == "3":
@@ -44,7 +47,7 @@ def member_menu(user:dict):
             print("Wrong! You can choose from 1 to 3")
 
 
-auth = Auth()
+
 while True:
     register_or_login = input("Type 'register' or 'login' and if you want to leave type exit: ")
     if register_or_login.lower() == 'exit':
