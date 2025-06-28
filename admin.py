@@ -34,7 +34,11 @@ def create_mission(admin_username:str):
     save_mission(data)
     return f"You create a mission successfully with ID: {new_mission["id"]}"
 
+#just to see all the missions. without caring if it completed by someone or not
 def view_missions():
+    if not os.path.exists(path):
+        print("missions.json file not found")
+        return
     data = load_missions()
     missions = data["missions"]
     for mission in missions:
@@ -42,4 +46,21 @@ def view_missions():
             print(f"{mission["id"]}. Title: {mission["title"]} [Description -> {mission["description"]}, Created by: {mission["created_by"]["username"]}, Answer for the mission: {mission["answer"]} ,Solved by members: None]")
         else:
             print(f"{mission["id"]}. Title: {mission["title"]} [Description -> {mission["description"]}, Created by: {mission["created_by"]["username"]}, Answer for the mission: {mission["answer"]} , Solved by members: {mission["completed_by"]}]")
-        
+
+
+def review_submitted_missions():
+    if not os.path.exists(path):
+        print("missions.json file not found")
+        return
+    data = load_missions()
+    missions = data["missions"]
+    any_completed = False
+    for mission in missions:
+        if mission["completed_by"]:
+            any_completed = True
+            print(f"{mission["id"]}. Title: {mission["title"]} [Description -> {mission["description"]}]")
+            for member in mission["completed_by"]:
+                print(f"    Solved by member: {member}")
+            print()
+    if not any_completed:
+        print("No mission is completed yet!")
