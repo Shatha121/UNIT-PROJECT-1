@@ -17,5 +17,12 @@
     "rank": "Novice",
     "missions_completed": 0,
     "approval_status": true
+  },
+  "Sara": {
+    "password": "123456",
+    "role": "member",
+    "rank": "Novice",
+    "missions_completed": 0,
+    "approval_status": false
   }
 }

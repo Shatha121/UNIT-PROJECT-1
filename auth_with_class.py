@@ -3,13 +3,13 @@ import os
 
 class Auth:
     def __init__(self):
-        self.path = "D:/Units/UNIT-PROJECT-1/data/users.json"
-        self.path_rejected_users = "D:/Units/UNIT-PROJECT-1/data/rejected_users.json"
-        self.users = self.load_user()
-        self.rejected_users = self.load_rejected_user()
+        self._path = "D:/Units/UNIT-PROJECT-1/data/users.json"
+        self._path_rejected_users = "D:/Units/UNIT-PROJECT-1/data/rejected_users.json"
+        self._users = self.load_user()
+        self._rejected_users = self.load_rejected_user()
     def load_user(self):
-        if os.path.exists(self.path):
-            with open(self.path,"r") as file:
+        if os.path.exists(self._path):
+            with open(self._path,"r") as file:
                 try:
                     users_dict = json.load(file)
                 except json.JSONDecodeError:
@@ -18,11 +18,11 @@ class Auth:
             users_dict = {}
         return users_dict
     def save_user(self):
-        with open(self.path,"w") as file:
-            json.dump(self.users,file,indent=2)
+        with open(self._path,"w") as file:
+            json.dump(self._users,file,indent=2)
     def load_rejected_user(self):
-        if os.path.exists(self.path_rejected_users):
-            with open(self.path_rejected_users,"r") as file:
+        if os.path.exists(self._path_rejected_users):
+            with open(self._path_rejected_users,"r") as file:
                 try:
                     users_rejected_users_dict = json.load(file)
                 except json.JSONDecodeError:
@@ -31,20 +31,20 @@ class Auth:
             users_rejected_users_dict = {}
         return users_rejected_users_dict
     def save_rejected_user(self,user):
-        with open(self.path_rejected_users,"w") as file:
+        with open(self._path_rejected_users,"w") as file:
             json.dump(user,file,indent=2)
     
     def login(self,username,password):
-        if username in self.users:
-            if self.users[username]["password"] == password:
-                if self.users[username]["role"] == "admin":
+        if username in self._users:
+            if self._users[username]["password"] == password:
+                if self._users[username]["role"] == "admin":
                     return {"username":username,"role":"admin"}
                 else:
-                    return {"username":username,"role":"member","approval_status":self.users[username]["approval_status"]}
+                    return {"username":username,"role":"member","approval_status":self._users[username]["approval_status"]}
             else:
                 raise ValueError("incorrect password!")
-        elif username in self.rejected_users:
-            if self.rejected_users[username]["password"] == password:
+        elif username in self._rejected_users:
+            if self._rejected_users[username]["password"] == password:
                 raise ValueError(f"You have been rejected! You can't login with this username: {username}")
             else:
                 raise ValueError("incorrect password!")
@@ -53,7 +53,13 @@ class Auth:
         
     def register(self,username,password):
         access_code = "@superaccess123"
-        if username in self.users:
+        if not username:
+            raise ValueError("You need to enter a username!")
+        if not password:
+            raise ValueError("You need to enter a password!")
+        if username[0].isdigit():
+            raise ValueError("Username can't start with a digit!")
+        if username in self._users:
             raise ValueError("The username already exists!")
         else:
             
@@ -61,18 +67,18 @@ class Auth:
             if admin_or_member.lower() == "admin":
                 checking_access = input("Enter admin access code: ")
                 if checking_access == access_code:
-                    self.users[username] = {"password":password,"role":"admin"}
+                    self._users[username] = {"password":password,"role":"admin"}
                     self.save_user() 
                     print("Registration successful, you are now one of admins of the Society")
                     return {"username":username,"role":"admin"}
                 else:
                     print("incorrect access code! Your role is going to be member")        
-                    self.users[username] = {"password":password,"role":"member","rank":"Novice","missions_completed": 0, "approval_status":False}
+                    self._users[username] = {"password":password,"role":"member","rank":"Novice","missions_completed": 0, "approval_status":False}
                     self.save_user() 
                     print(f"Registration successful")
                     return {"username":username,"role":"member"}
             elif admin_or_member.lower() == "member":
-                self.users[username] = {"password":password,"role":"member","rank":"Novice","missions_completed": 0, "approval_status":False}
+                self._users[username] = {"password":password,"role":"member","rank":"Novice","missions_completed": 0, "approval_status":False}
                 self.save_user()
                 print(f"Registration successful")
                 return {"username":username,"role":"member"}
@@ -81,16 +87,16 @@ class Auth:
             
         
     def view_all_users(self):
-        for username , details in self.users.items():
+        for username , details in self._users.items():
             print(f"{username} - Role: {details["role"]}")
     
     def promote_to_admin(self,username:str):
-        if username not in self.users:
+        if username not in self._users:
             return f"This username: {username} doesn't exist!"
-        elif self.users[username]["role"] == "admin":
+        elif self._users[username]["role"] == "admin":
             return f"This username: {username} is already an admin!"
         else:
-            self.users[username]["role"] = "admin"
+            self._users[username]["role"] = "admin"
             self.save_user()
             return f"{username} has been promoted to admin"
         
