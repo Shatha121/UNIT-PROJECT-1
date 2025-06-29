@@ -1,5 +1,9 @@
 import os
 import json
+from auth_with_class import Auth
+
+auth = Auth()
+
 
 path = "D:/Units/UNIT-PROJECT-1/data/missions.json"
 
@@ -64,3 +68,33 @@ def review_submitted_missions():
             print()
     if not any_completed:
         print("No mission is completed yet!")
+
+
+def accept_pending_users():
+    users = auth.users
+    users_to_delete = []
+    member_to_approve = False
+    for username, datails in users.items():
+        if datails["role"] == "member":
+            if datails["approval_status"] == False:
+                member_to_approve = True
+                print(f"{username}")
+                admin_choise =input("Do you approve this member joining ? type 'y' for yes or type 'n' for no: ")
+                if admin_choise == "y":
+                    users[username]["approval_status"] = True
+                    auth.save_user()
+                    print(f"You have accepted {username}")
+                elif admin_choise == "n":
+                    user = {username:datails}
+                    auth.save_rejected_user(user)
+                    users_to_delete.append(username)
+                    print(f"You have rejected {username}")
+                else:
+                    print("You need to type either 'y' or 'n' !")    
+        else:
+            continue
+    if member_to_approve == False:
+        print("There isn't any member left to approve!")
+    for user in users_to_delete:
+        del users[user]        
+        auth.save_user()

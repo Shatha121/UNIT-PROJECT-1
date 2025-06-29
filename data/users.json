@@ -16,13 +16,6 @@
     "role": "member",
     "rank": "Novice",
     "missions_completed": 0,
-    "approval_status": false
-  },
-  "Yasser": {
-    "password": "123456",
-    "role": "member",
-    "rank": "Novice",
-    "missions_completed": 0,
-    "approval_status": false
+    "approval_status": true
   }
 }

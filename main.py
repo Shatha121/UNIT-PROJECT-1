@@ -1,5 +1,5 @@
 from auth_with_class import Auth
-from admin import create_mission,view_missions,review_submitted_missions
+from admin import create_mission,view_missions,review_submitted_missions,accept_pending_users
 from members import view_available_missions, submit_missions,view_progress
 
 
@@ -8,7 +8,7 @@ auth = Auth()
 def admin_menu(user:dict):
     print(f"Welcome Admin {user['username']}, What would you like to do?")
     while True:
-        admin_choice = input("1)View All Users \n2)Promote User \n3)View Missions \n4)Create Mission \n5)review submitted missions \n6)Logout \nChoice: ")
+        admin_choice = input("1)View All Users \n2)Promote User \n3)View Missions \n4)Create Mission \n5)review submitted missions \n6)accept pending users \n7)Logout \nChoice: ")
         if admin_choice == "1":
             print()
             print("-"*15)
@@ -35,7 +35,12 @@ def admin_menu(user:dict):
             print("-"*15)
             review_submitted_missions()
             print("-"*15)
-        elif admin_choice == "6" or admin_choice.lower() == "logout":
+        elif admin_choice == "6":
+            print()
+            print("-"*15)
+            accept_pending_users()
+            print("-"*15)
+        elif admin_choice == "7" or admin_choice.lower() == "logout":
             print()
             print("-"*15)
             print("Bye👋")

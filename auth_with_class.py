@@ -4,7 +4,9 @@ import os
 class Auth:
     def __init__(self):
         self.path = "D:/Units/UNIT-PROJECT-1/data/users.json"
+        self.path_rejected_users = "D:/Units/UNIT-PROJECT-1/data/rejected_users.json"
         self.users = self.load_user()
+        self.rejected_users = self.load_rejected_user()
     def load_user(self):
         if os.path.exists(self.path):
             with open(self.path,"r") as file:
@@ -18,6 +20,19 @@ class Auth:
     def save_user(self):
         with open(self.path,"w") as file:
             json.dump(self.users,file,indent=2)
+    def load_rejected_user(self):
+        if os.path.exists(self.path_rejected_users):
+            with open(self.path_rejected_users,"r") as file:
+                try:
+                    users_rejected_users_dict = json.load(file)
+                except json.JSONDecodeError:
+                    users_rejected_users_dict = {}
+        else:
+            users_rejected_users_dict = {}
+        return users_rejected_users_dict
+    def save_rejected_user(self,user):
+        with open(self.path_rejected_users,"w") as file:
+            json.dump(user,file,indent=2)
     
     def login(self,username,password):
         if username in self.users:
@@ -26,6 +41,11 @@ class Auth:
                     return {"username":username,"role":"admin"}
                 else:
                     return {"username":username,"role":"member","approval_status":self.users[username]["approval_status"]}
+            else:
+                raise ValueError("incorrect password!")
+        elif username in self.rejected_users:
+            if self.rejected_users[username]["password"] == password:
+                raise ValueError(f"You have been rejected! You can't login with this username: {username}")
             else:
                 raise ValueError("incorrect password!")
         else:
