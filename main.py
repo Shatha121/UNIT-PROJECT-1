@@ -42,7 +42,7 @@ def admin_menu(user:dict):
             print("-"*15)
             break
         else:
-            print("Wrong! You can choose from 1 to 5")
+            print("Wrong! You can choose from 1 to 6")
 
 
 
@@ -70,7 +70,7 @@ def member_menu(user:dict):
             print("Bye👋")
             break
         else:
-            print("Wrong! You can choose from 1 to 3")
+            print("Wrong! You can choose from 1 to 4")
 
 
 
@@ -86,7 +86,7 @@ while True:
         if user["role"] == "admin":
             admin_menu(user)
         else:
-            member_menu(user)
+            print("Your account is pending. Please wait until your registration approved before logging in")
         break
     elif register_or_login.lower() == 'login':
         username = input("Please enter your username: ")
@@ -95,7 +95,10 @@ while True:
         if user["role"] == "admin":
             admin_menu(user)
         else:
-            member_menu(user)
+            if user["approval_status"] == True:
+                member_menu(user)
+            else:
+                print("Your account is still pending admin approval. Please wait until your registration approved before logging in")
         break
     else:
         print("You need to choose either register or login")

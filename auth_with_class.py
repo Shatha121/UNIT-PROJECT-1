@@ -25,7 +25,7 @@ class Auth:
                 if self.users[username]["role"] == "admin":
                     return {"username":username,"role":"admin"}
                 else:
-                    return {"username":username,"role":"member"}
+                    return {"username":username,"role":"member","approval_status":self.users[username]["approval_status"]}
             else:
                 raise ValueError("incorrect password!")
         else:
@@ -47,14 +47,14 @@ class Auth:
                     return {"username":username,"role":"admin"}
                 else:
                     print("incorrect access code! Your role is going to be member")        
-                    self.users[username] = {"password":password,"role":"member","rank":"Novice","missions_completed": 0}
+                    self.users[username] = {"password":password,"role":"member","rank":"Novice","missions_completed": 0, "approval_status":False}
                     self.save_user() 
-                    print(f"Registration successful, you are now a member of the Society")
+                    print(f"Registration successful")
                     return {"username":username,"role":"member"}
             elif admin_or_member.lower() == "member":
-                self.users[username] = {"password":password,"role":"member","rank":"Novice","missions_completed": 0}
+                self.users[username] = {"password":password,"role":"member","rank":"Novice","missions_completed": 0, "approval_status":False}
                 self.save_user()
-                print(f"Registration successful, you are now a member of the Society")
+                print(f"Registration successful")
                 return {"username":username,"role":"member"}
             else:
                 raise ValueError("You have to choose between member or admin!")

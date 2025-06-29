@@ -7,26 +7,22 @@
     "password": "115544",
     "role": "admin"
   },
+  "Mohammed": {
+    "password": "456789",
+    "role": "admin"
+  },
+  "Ali": {
+    "password": "123456",
+    "role": "member",
+    "rank": "Novice",
+    "missions_completed": 0,
+    "approval_status": false
+  },
   "Yasser": {
     "password": "123456",
     "role": "member",
     "rank": "Novice",
-    "missions_completed": 1
-  },
-  "Nasser": {
-    "password": "123456",
-    "role": "member",
-    "rank": "Novice",
-    "missions_completed": 0
-  },
-  "Abdullah": {
-    "password": "123456",
-    "role": "member",
-    "rank": "Novice",
-    "missions_completed": 0
-  },
-  "Mohammed": {
-    "password": "456789",
-    "role": "admin"
+    "missions_completed": 0,
+    "approval_status": false
   }
 }
