@@ -42,17 +42,20 @@ class Auth:
                 checking_access = input("Enter admin access code: ")
                 if checking_access == access_code:
                     self.users[username] = {"password":password,"role":"admin"}
-                    self.save_user()
-                    return f"Registration successful, you are now one of admins of the Society"
+                    self.save_user() 
+                    print("Registration successful, you are now one of admins of the Society")
+                    return {"username":username,"role":"admin"}
                 else:
                     print("incorrect access code! Your role is going to be member")        
                     self.users[username] = {"password":password,"role":"member","rank":"Novice","missions_completed": 0}
-                    self.save_user()
-                    return f"Registration successful, you are now a member of the Society"
+                    self.save_user() 
+                    print(f"Registration successful, you are now a member of the Society")
+                    return {"username":username,"role":"member"}
             elif admin_or_member.lower() == "member":
                 self.users[username] = {"password":password,"role":"member","rank":"Novice","missions_completed": 0}
                 self.save_user()
-                return f"Registration successful, you are now a member of the Society"
+                print(f"Registration successful, you are now a member of the Society")
+                return {"username":username,"role":"member"}
             else:
                 raise ValueError("You have to choose between member or admin!")
             

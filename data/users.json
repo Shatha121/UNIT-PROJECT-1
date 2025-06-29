@@ -12,5 +12,21 @@
     "role": "member",
     "rank": "Novice",
     "missions_completed": 1
+  },
+  "Nasser": {
+    "password": "123456",
+    "role": "member",
+    "rank": "Novice",
+    "missions_completed": 0
+  },
+  "Abdullah": {
+    "password": "123456",
+    "role": "member",
+    "rank": "Novice",
+    "missions_completed": 0
+  },
+  "Mohammed": {
+    "password": "456789",
+    "role": "admin"
   }
 }

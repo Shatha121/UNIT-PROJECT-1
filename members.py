@@ -65,6 +65,12 @@ def submit_missions(username:str):
     return "There is no mission with this ID"
 
 
+def view_progress(username:str):
+    users = auth.users
+    return f"Agent {username} \n  rank: {users[username]["rank"]} \n  number of completed missions: {users[username]["missions_completed"]}"
+
+
+
          
 
     
