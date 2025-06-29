@@ -15,7 +15,7 @@
 #### As a admin I should be able to do the following :
 - Register / Login (with access code) .
 - Create missions (title, description, answer) .
-- View all usersand their roles . 
+- View all users and their roles . 
 - Promote members to admins . 
 - Review all submitted/completed missions.
 
