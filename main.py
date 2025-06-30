@@ -72,7 +72,10 @@ def member_menu(user:dict):
             view_progress(user["username"])
             print("-"*15)
         elif member_choice == "4" or member_choice.lower() == "logout":
+            print()
+            print("-"*15)
             print("Bye👋")
+            print("-"*15)
             break
         else:
             print("Wrong! You can choose from 1 to 4")
@@ -82,11 +85,15 @@ def member_menu(user:dict):
 while True:
     register_or_login = input("Type 'register' or 'login' and if you want to leave type exit: ")
     if register_or_login.lower() == 'exit':
+        print()
+        print("-"*15)
         print("Bye")
+        print("-"*15)
         break
     if register_or_login.lower() == 'register':
         username = input("Please enter your username: ")
         password = input("Please enter your password: ")
+        
         user = auth.register(username,password)
         if user["role"] == "admin":
             admin_menu(user)

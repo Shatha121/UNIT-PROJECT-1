@@ -21,12 +21,40 @@
   "Sara": {
     "password": "123456",
     "role": "member",
-    "rank": "Novice",
-    "missions_completed": 0,
+    "rank": "Solver",
+    "missions_completed": 5,
     "approval_status": true
   },
   "Nasser": {
     "password": "123456",
     "role": "admin"
+  },
+  "Testing2": {
+    "password": "123456",
+    "role": "member",
+    "rank": "Novice",
+    "missions_completed": 0,
+    "approval_status": true,
+    "reason": "I have no reason"
+  },
+  "AdTesting": {
+    "password": "123456",
+    "role": "admin"
+  },
+  "Testing3": {
+    "password": "123456",
+    "role": "member",
+    "rank": "Novice",
+    "missions_completed": 0,
+    "approval_status": false,
+    "reason": ""
+  },
+  "AdTesting2": {
+    "password": "123456",
+    "role": "admin",
+    "rank": "Novice",
+    "missions_completed": 0,
+    "approval_status": false,
+    "reason": ""
   }
 }

@@ -19,5 +19,21 @@
     "rank": "Novice",
     "missions_completed": 0,
     "approval_status": false
+  },
+  "Testing1": {
+    "password": "123456",
+    "role": "member",
+    "rank": "Novice",
+    "missions_completed": 0,
+    "approval_status": false,
+    "reason": "No reason"
+  },
+  "Testing3": {
+    "password": "123456",
+    "role": "member",
+    "rank": "Novice",
+    "missions_completed": 0,
+    "approval_status": false,
+    "reason": ""
   }
 }

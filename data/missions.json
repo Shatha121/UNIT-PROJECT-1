@@ -11,7 +11,8 @@
       "answer": "this is a test",
       "completed_by": [
         "Yasser",
-        "Ali"
+        "Ali",
+        "Sara"
       ]
     },
     {
@@ -24,7 +25,8 @@
       },
       "answer": "eye",
       "completed_by": [
-        "Ali"
+        "Ali",
+        "Sara"
       ]
     },
     {
@@ -37,7 +39,8 @@
       },
       "answer": "56",
       "completed_by": [
-        "Ali"
+        "Ali",
+        "Sara"
       ]
     },
     {
@@ -49,7 +52,9 @@
         "role": "admin"
       },
       "answer": "free pizza",
-      "completed_by": []
+      "completed_by": [
+        "Sara"
+      ]
     },
     {
       "id": 5,
@@ -60,6 +65,19 @@
         "role": "admin"
       },
       "answer": "an echo",
+      "completed_by": [
+        "Sara"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Testing",
+      "description": "testing",
+      "created_by": {
+        "username": "Shatha",
+        "role": "admin"
+      },
+      "answer": "ok",
       "completed_by": []
     }
   ]

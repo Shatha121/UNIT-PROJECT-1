@@ -75,13 +75,15 @@ class Auth:
                     print("Registration successful, you are now one of admins of the Society")
                     return {"username":username,"role":"admin"}
                 else:
-                    print("incorrect access code! Your role is going to be member")        
-                    self._users[username] = {"password":password,"role":"member","rank":"Novice","missions_completed": 0, "approval_status":False}
+                    print("incorrect access code! Your role is going to be member")
+                    reason = input("Why should the Society accept you? (State your reason in one sentence): ")        
+                    self._users[username] = {"password":password,"role":"member","rank":"Novice","missions_completed": 0, "approval_status":False,"reason":reason}
                     self.save_user() 
                     print(f"Registration successful")
                     return {"username":username,"role":"member"}
             elif admin_or_member.lower() == "member":
-                self._users[username] = {"password":password,"role":"member","rank":"Novice","missions_completed": 0, "approval_status":False}
+                member_reason = input("Why should the Society accept you? (State your reason in one sentence): ")  
+                self._users[username] = {"password":password,"role":"member","rank":"Novice","missions_completed": 0, "approval_status":False,"reason":member_reason}
                 self.save_user()
                 print(f"Registration successful")
                 return {"username":username,"role":"member"}

@@ -25,8 +25,15 @@ def save_mission(data):
 
 def create_mission(admin_username:str):
     title = input("Enter the mission title: ")
+    if title == "":
+        return f"You need to enter a title!"
     description = input("Enter mission description: ")
+    if description == "":
+        return f"You need to enter a description!"
     answer = input("Enter the answer for the mission: ")
+    if answer == "":
+        return f"You need to enter an answer for the mission!"
+    
     data = load_missions()
     missions = data["missions"]
     for mission in missions:
@@ -79,16 +86,18 @@ def accept_pending_users():
             if datails["approval_status"] == False:
                 member_to_approve = True
                 print(f"{username}")
-                admin_choise =input("Do you approve this member joining ? type 'y' for yes or type 'n' for no: ")
-                if admin_choise == "y":
+                print(f"Reason: {datails["reason"]}")
+                admin_choise =input("Do you approve this member joining ? type 'y' for yes or type 'n' for no or type 's' if you are not sure: ")
+                if admin_choise.lower() == "y":
                     users[username]["approval_status"] = True
                     auth.save_user()
                     print(f"You have accepted {username}")
-                elif admin_choise == "n":
-                    user = {username:datails}
-                    auth.save_rejected_user(user)
+                elif admin_choise.lower() == "n":
+                    auth.save_rejected_user({username:datails})
                     users_to_delete.append(username)
                     print(f"You have rejected {username}")
+                elif admin_choise.lower() == "s":
+                    continue
                 else:
                     print("You need to type either 'y' or 'n' !")    
         else:
