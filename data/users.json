@@ -13,9 +13,9 @@
   },
   "Ali": {
     "password": "123456",
-    "role": "member",
-    "rank": "Novice",
-    "missions_completed": 0,
+    "role": "admin",
+    "rank": "Explorer",
+    "missions_completed": 3,
     "approval_status": true
   },
   "Sara": {
@@ -23,6 +23,10 @@
     "role": "member",
     "rank": "Novice",
     "missions_completed": 0,
-    "approval_status": false
+    "approval_status": true
+  },
+  "Nasser": {
+    "password": "123456",
+    "role": "admin"
   }
 }

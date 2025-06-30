@@ -69,7 +69,7 @@ def member_menu(user:dict):
         elif member_choice == "3":
             print()
             print("-"*15)
-            print(view_progress(user["username"]))
+            view_progress(user["username"])
             print("-"*15)
         elif member_choice == "4" or member_choice.lower() == "logout":
             print("Bye👋")

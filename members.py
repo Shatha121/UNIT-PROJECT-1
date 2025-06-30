@@ -46,7 +46,7 @@ def submit_missions(username:str):
             answer = input("Enter the answer for this mission: ").strip().lower()
             if mission["answer"] == answer:
                 mission["completed_by"].append(username)
-                users = auth.users
+                users = auth._users
                 users[username]["missions_completed"] += 1
                 completed = users[username]["missions_completed"]
                 if completed >= 10:
@@ -66,8 +66,19 @@ def submit_missions(username:str):
 
 
 def view_progress(username:str):
-    users = auth.users
-    return f"Agent {username} \n  rank: {users[username]["rank"]} \n  number of completed missions: {users[username]["missions_completed"]}"
+    users = auth._users
+    data = load_missions()
+    missions = data["missions"]
+    print(f"Agent {username} \n  rank: {users[username]["rank"]} \n  number of completed missions: {users[username]["missions_completed"]}")
+    avaliable_missions = [mission for mission in missions if username in mission["completed_by"]]
+    if not avaliable_missions:
+        print("You didn't complete any mission yet!")
+    else:
+        print("The missions you completed:")
+    for mission in missions:
+        print(f"    {mission["id"]}. Title: {mission["title"]} [Description -> {mission["description"]}]")
+         
+    
 
 
 

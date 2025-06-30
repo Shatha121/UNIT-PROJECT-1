@@ -10,8 +10,57 @@
       },
       "answer": "this is a test",
       "completed_by": [
-        "Yasser"
+        "Yasser",
+        "Ali"
       ]
+    },
+    {
+      "id": 2,
+      "title": "Mirror Code",
+      "description": "You see the code: 3Y3 written on the wall in a mirror",
+      "created_by": {
+        "username": "Shatha",
+        "role": "admin"
+      },
+      "answer": "eye",
+      "completed_by": [
+        "Ali"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "The Agent's Number",
+      "description": "An agent leaves a clue: \"The number I'm thinking of is a 2-digit number. The digits add to 11. The number is greater than 50 and is divisble by 7\"",
+      "created_by": {
+        "username": "Shatha",
+        "role": "admin"
+      },
+      "answer": "56",
+      "completed_by": [
+        "Ali"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Cracked Code",
+      "description": "Creak this: SERR CVMMN",
+      "created_by": {
+        "username": "Ali",
+        "role": "admin"
+      },
+      "answer": "free pizza",
+      "completed_by": []
+    },
+    {
+      "id": 5,
+      "title": "Solve this",
+      "description": "P zwlhr dpaovba h tvbao huk olhy dpaovba lhyz. P ohcl uv ivkf, iba P jvtl hspcl dpao dpuk. Doha ht P?",
+      "created_by": {
+        "username": "Shatha",
+        "role": "admin"
+      },
+      "answer": "an echo",
+      "completed_by": []
     }
   ]
 }

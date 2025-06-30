@@ -71,7 +71,7 @@ def review_submitted_missions():
 
 
 def accept_pending_users():
-    users = auth.users
+    users = auth._users
     users_to_delete = []
     member_to_approve = False
     for username, datails in users.items():

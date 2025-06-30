@@ -7,6 +7,7 @@ class Auth:
         self._path_rejected_users = "D:/Units/UNIT-PROJECT-1/data/rejected_users.json"
         self._users = self.load_user()
         self._rejected_users = self.load_rejected_user()
+        self.__access_code = "@superaccess123"
     def load_user(self):
         if os.path.exists(self._path):
             with open(self._path,"r") as file:
@@ -31,8 +32,9 @@ class Auth:
             users_rejected_users_dict = {}
         return users_rejected_users_dict
     def save_rejected_user(self,user):
+        self._rejected_users.update(user)
         with open(self._path_rejected_users,"w") as file:
-            json.dump(user,file,indent=2)
+            json.dump(self._rejected_users,file,indent=2)
     
     def login(self,username,password):
         if username in self._users:
@@ -52,7 +54,6 @@ class Auth:
             raise ValueError("The username doesn't exist!")
         
     def register(self,username,password):
-        access_code = "@superaccess123"
         if not username:
             raise ValueError("You need to enter a username!")
         if not password:
@@ -61,12 +62,14 @@ class Auth:
             raise ValueError("Username can't start with a digit!")
         if username in self._users:
             raise ValueError("The username already exists!")
+        if username in self._rejected_users and self._rejected_users[username]["password"] == password:
+            raise ValueError("This username is rejected!")
         else:
             
             admin_or_member = input("Do you want to register as admin or member? ")
             if admin_or_member.lower() == "admin":
                 checking_access = input("Enter admin access code: ")
-                if checking_access == access_code:
+                if checking_access == self.__access_code:
                     self._users[username] = {"password":password,"role":"admin"}
                     self.save_user() 
                     print("Registration successful, you are now one of admins of the Society")
