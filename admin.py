@@ -91,31 +91,31 @@ def accept_pending_users():
     users = auth._users
     users_to_delete = []
     member_to_approve = False
-    for username, datails in users.items():
-        if datails["role"] == "member":
-            if datails["approval_status"] == False:
+    for username, details in users.items():
+        if details["role"] == "member":
+            if details["approval_status"] == False:
                 member_to_approve = True
                 print(f"{username}")
-                print(f"Reason: {datails["reason"]}")
-                admin_choise =input("Do you approve this member joining ? type 'y' for yes or type 'n' for no or type 's' if you are not sure: ")
+                print(f"Reason: {details["reason"]}")
+                admin_choice =input("Do you approve this member joining ? type 'y' for yes or type 'n' for no or type 's' if you are not sure: ")
                 while True:
-                    if admin_choise.lower() == "y":
+                    if admin_choice.lower() == "y":
                         users[username]["approval_status"] = True
                         auth.save_user()
                         print(Fore.GREEN + f"[✔] You have accepted {username}")
                         break
-                    elif admin_choise.lower() == "n":
-                        auth.save_rejected_user({username:datails})
+                    elif admin_choice.lower() == "n":
+                        auth.save_rejected_user({username:details})
                         users_to_delete.append(username)
                         print(Fore.YELLOW + f"[✔] You have rejected {username}")
                         break
-                    elif admin_choise.lower() == "s":
+                    elif admin_choice.lower() == "s":
                         break
                     else:
                         print(Fore.RED +"[❌] You need to type either 'y' or 'n' or 's'!")
                         print(f"{username}")
-                        print(f"Reason: {datails["reason"]}")
-                        admin_choise =input("Do you approve this member joining ? type 'y' for yes or type 'n' for no or type 's' if you are not sure: ")    
+                        print(f"Reason: {details["reason"]}")
+                        admin_choice =input("Do you approve this member joining ? type 'y' for yes or type 'n' for no or type 's' if you are not sure: ")    
         else:
             continue
     if member_to_approve == False:

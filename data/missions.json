@@ -93,7 +93,9 @@
         "role": "admin"
       },
       "answer": "ok",
-      "completed_by": []
+      "completed_by": [
+        "Ahmad"
+      ]
     }
   ]
 }

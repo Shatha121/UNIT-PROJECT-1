@@ -28,22 +28,22 @@ def view_available_missions(username:str):
     """This will show the user the available missions to him/her but only the missions that the user didn't complete"""
     data = load_missions()
     missions = data["missions"]
-    avaliable_missions = [mission for mission in missions if username not in mission["completed_by"]]
-    if not avaliable_missions:
+    available_missions = [mission for mission in missions if username not in mission["completed_by"]]
+    if not available_missions:
         return "You completed all the avaliable missions 🎉"
     
     print("Avaliable missions:")
-    for mission in avaliable_missions:
+    for mission in available_missions:
         print(f"{mission["id"]}. Title: {mission["title"]} [Description -> {mission["description"]}]")
 
-def submit_missions(username:str):
+def submit_mission(username:str):
     """This function allow the user to enter the ID of the mission that he want to submit to complete"""
     data = load_missions()
     missions = data["missions"]
     if not missions:
         return Fore.RED + "There is no missions yet!"
-    avaliable_missions = [mission for mission in missions if username not in mission["completed_by"]]
-    if not avaliable_missions:
+    available_missions = [mission for mission in missions if username not in mission["completed_by"]]
+    if not available_missions:
         return "There is no avaliable missions for you to solve 🎉"
     try:
         mission_id = int(input("Enter the ID of the mission that you want to submit: "))

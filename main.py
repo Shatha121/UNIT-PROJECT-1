@@ -1,6 +1,6 @@
 from auth_with_class import Auth
 from admin import create_mission,view_missions,review_submitted_missions,accept_pending_users
-from members import view_available_missions, submit_missions,view_progress
+from members import view_available_missions, submit_mission,view_progress
 from colorama import init, Fore
 init(autoreset=True)
 
@@ -72,7 +72,7 @@ def member_menu(user:dict):
         elif member_choice == "2":
             print()
             print("-"*15)
-            print(submit_missions(user["username"]))
+            print(submit_mission(user["username"]))
             print("-"*15)
         elif member_choice == "3":
             print()

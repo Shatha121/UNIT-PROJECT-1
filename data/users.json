@@ -81,7 +81,7 @@
     "password": "12345678",
     "role": "member",
     "rank": "Novice",
-    "missions_completed": 0,
+    "missions_completed": 1,
     "approval_status": true,
     "reason": "I solve problems fast"
   },

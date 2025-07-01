@@ -9,7 +9,7 @@
 - Register / Login .
 - View available missions .
 - Submit answers to missions .
-- Get Ranked up automutomatically .
+- Get Ranked up automatically .
 - View their current progress, rank and number of completed missions .
 
 #### As a admin I should be able to do the following :
