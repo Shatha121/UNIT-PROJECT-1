@@ -56,5 +56,13 @@
     "missions_completed": 0,
     "approval_status": false,
     "reason": ""
+  },
+  "Abdullah": {
+    "password": "12345678",
+    "role": "member",
+    "rank": "Novice",
+    "missions_completed": 0,
+    "approval_status": false,
+    "reason": "No reason"
   }
 }

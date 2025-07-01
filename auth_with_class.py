@@ -60,6 +60,8 @@ class Auth:
             raise ValueError("You need to enter a password!")
         if username[0].isdigit():
             raise ValueError("Username can't start with a digit!")
+        if len(password) < 8:
+            raise ValueError("The length of the password can't be less than 8!")
         if username in self._users:
             raise ValueError("The username already exists!")
         if username in self._rejected_users and self._rejected_users[username]["password"] == password:

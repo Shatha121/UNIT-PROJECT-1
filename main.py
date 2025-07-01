@@ -87,7 +87,7 @@ while True:
     if register_or_login.lower() == 'exit':
         print()
         print("-"*15)
-        print("Bye")
+        print("Bye 👋")
         print("-"*15)
         break
     if register_or_login.lower() == 'register':
