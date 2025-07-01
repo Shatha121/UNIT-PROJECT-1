@@ -2,7 +2,7 @@
 
 
 
-#### Overview : A simple console-based Python app that allows admins to create and manage secret missions, and members to solve them, level up, and climb the ranks.
+#### Overview : A simple console-based Python app that allows **admins** to create and manage secret missions, and members to solve them, level up, and climb the ranks.
 
 ### Features & User Stories
 #### As a member I should be able to do the following :
@@ -10,7 +10,7 @@
 - View available missions .
 - Submit answers to missions .
 - Get Ranked up automutomatically .
-- View their current progress and rank .
+- View their current progress, rank and number of completed missions .
 
 #### As a admin I should be able to do the following :
 - Register / Login (with access code) .
@@ -18,6 +18,7 @@
 - View all users and their roles . 
 - Promote members to admins . 
 - Review all submitted/completed missions.
+- Approve or reject new members .
 
 #### Rank System :
 | Missions completed |    Rank    |
@@ -38,7 +39,8 @@
 #### As a Member:
 - Type '1' to view available missions .
 - Type '2' to submit a mission answer .
-- Type '3' to or 'logout' to log out .
+- Type '3' to view progress with the completed missions .
+- Type '4' to or 'logout' to log out .
 
 #### As a Admin:
 - Type '1' to view all users .
@@ -46,5 +48,13 @@
 - Type '3' to view all missions .
 - Type '4' to create a new mission .
 - Type '5' to review submitted missions .
-- Type '6' to or 'logout' to log out . 
+- Type '6' to approve or reject pending members .
+- Type '7' to or 'logout' to log out . 
 
+
+### Requirements
+- Python 3.7+
+- Only external dependency: 'colorma'
+Install it via:
+''' bash
+pip install colorma

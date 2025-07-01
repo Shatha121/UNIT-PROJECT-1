@@ -1,12 +1,15 @@
 import os
 import json
 from auth_with_class import Auth
+from colorama import init, Fore
+init(autoreset=True)
 
 auth = Auth()
 
 path = "D:/Units/UNIT-PROJECT-1/data/missions.json"
 
 def load_missions():
+    """it will load the missions into missions.json"""
     if os.path.exists(path):
         with open(path,"r") as file:
             try:
@@ -17,10 +20,12 @@ def load_missions():
         return {"missions":[]}
     
 def save_mission(data):
+     """it will save the missions into missions.json"""
      with open(path,"w") as file:
             json.dump(data,file,indent=2)
 
 def view_available_missions(username:str):
+    """This will show the user the available missions to him/her but only the missions that the user didn't complete"""
     data = load_missions()
     missions = data["missions"]
     avaliable_missions = [mission for mission in missions if username not in mission["completed_by"]]
@@ -32,8 +37,11 @@ def view_available_missions(username:str):
         print(f"{mission["id"]}. Title: {mission["title"]} [Description -> {mission["description"]}]")
 
 def submit_missions(username:str):
+    """This function allow the user to enter the ID of the mission that he want to submit to complete"""
     data = load_missions()
     missions = data["missions"]
+    if not missions:
+        return Fore.RED + "There is no missions yet!"
     avaliable_missions = [mission for mission in missions if username not in mission["completed_by"]]
     if not avaliable_missions:
         return "There is no avaliable missions for you to solve 🎉"
@@ -60,15 +68,16 @@ def submit_missions(username:str):
                         users[username]["rank"] = "Novice"
                     auth.save_user()
                     save_mission(data)
-                    return "👏 Congratulations you completed the mission, Now the mission is marked as completed "
+                    return Fore.GREEN +"👏 Congratulations you completed the mission, Now the mission is marked as completed "
                 else:
-                    return "Wrong answer!"
+                    return Fore.RED + "[❌] Wrong answer!"
             else:
-                return f"You already done from this mission with this ID {mission["id"]}!"
-    return "There is no mission with this ID"
+                return Fore.RED +  f"[❌] You already done from this mission with this ID {mission["id"]}!"
+    return Fore.RED + "[❌] There is no mission with this ID"
 
 
 def view_progress(username:str):
+    """This will show the user his/her rank and the number of missions that he completed also will view what mission he/she completed"""
     users = auth._users
     data = load_missions()
     missions = data["missions"]
@@ -79,7 +88,7 @@ def view_progress(username:str):
     else:
         print("The missions you completed:")
         for mission in completed_missions:
-            print(f"    {mission["id"]}. Title: {mission["title"]} [Description -> {mission["description"]}]")
+            print(Fore.GREEN + f"    {mission["id"]}. Title: {mission["title"]} [Description -> {mission["description"]}]")
          
     
 

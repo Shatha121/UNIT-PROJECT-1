@@ -35,5 +35,21 @@
     "missions_completed": 0,
     "approval_status": false,
     "reason": ""
+  },
+  "Checking": {
+    "password": "12345678",
+    "role": "member",
+    "rank": "Novice",
+    "missions_completed": 0,
+    "approval_status": false,
+    "reason": "Nothing"
+  },
+  "mm": {
+    "password": "12345678",
+    "role": "member",
+    "rank": "Novice",
+    "missions_completed": 0,
+    "approval_status": false,
+    "reason": "Nothing"
   }
 }

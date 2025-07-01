@@ -46,7 +46,7 @@
     "role": "member",
     "rank": "Novice",
     "missions_completed": 0,
-    "approval_status": false,
+    "approval_status": true,
     "reason": ""
   },
   "AdTesting2": {
@@ -62,7 +62,59 @@
     "role": "member",
     "rank": "Novice",
     "missions_completed": 0,
+    "approval_status": true,
+    "reason": "No reason"
+  },
+  "mmk": {
+    "password": "12345678",
+    "role": "admin"
+  },
+  "ooo": {
+    "password": "12345678",
+    "role": "member",
+    "rank": "Explorer",
+    "missions_completed": 3,
+    "approval_status": true,
+    "reason": "Because I question everything, play fair but hard"
+  },
+  "Ahmad": {
+    "password": "12345678",
+    "role": "member",
+    "rank": "Novice",
+    "missions_completed": 0,
+    "approval_status": true,
+    "reason": "I solve problems fast"
+  },
+  "Khalid": {
+    "password": "12345678",
+    "role": "member",
+    "rank": "Novice",
+    "missions_completed": 0,
+    "approval_status": false,
+    "reason": "I\u2019ve got the skills, the mindset"
+  },
+  "MM": {
+    "password": "12345678",
+    "role": "member",
+    "rank": "Novice",
+    "missions_completed": 0,
     "approval_status": false,
     "reason": "No reason"
+  },
+  "mmm": {
+    "password": "12345678",
+    "role": "member",
+    "rank": "Novice",
+    "missions_completed": 0,
+    "approval_status": false,
+    "reason": "No reason"
+  },
+  "MMMM": {
+    "password": "12345678",
+    "role": "member",
+    "rank": "Novice",
+    "missions_completed": 0,
+    "approval_status": false,
+    "reason": ""
   }
 }
